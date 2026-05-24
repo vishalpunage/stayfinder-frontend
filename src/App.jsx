@@ -34,7 +34,7 @@ export default function App() {
       if (search) params.append("search", search);
       if (location !== "All") params.append("location", location);
       if (typeFilter !== "All") params.append("type", typeFilter);
-      const res = await fetch(`${API}/hostels?${params}`);
+      const res = await fetch(`${API}/api/hostels?${params}`);
       const data = await res.json();
       setHostels(data);
     } catch {
@@ -68,7 +68,7 @@ export default function App() {
     const isLiked = wishlist[hostelId];
     try {
       if (isLiked) {
-        await fetch(`${API}/wishlist/${hostelId}`, {
+        await fetch(`${API}/api/wishlist/${hostelId}`, {
           method: "DELETE",
           headers: { Authorization: `Bearer ${token}` },
         });
